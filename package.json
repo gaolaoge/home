@@ -2,10 +2,9 @@
   "name": "personal_ws_after-end",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
-    "start": "nodemon --watch src --delay 1000ms src/index.tsx",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --watch src --delay 1000ms src/index.tsx"
   },
   "keywords": [],
   "author": "gaoge",
