@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.tsx",
   "scripts": {
-    "start": "nodemon --watch src --delay 1000ms src/index.tsx"
+    "start": "node src/index.tsx",
+    "dev": "nodemon --watch src --delay 1000ms src/index.tsx"
   },
   "keywords": [],
   "author": "gaoge",
