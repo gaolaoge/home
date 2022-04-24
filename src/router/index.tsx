@@ -1,4 +1,3 @@
-// import * as Router from "koa-router";
 const Router = require("koa-router");
 
 const HomeRoutes = require("./home.tsx");
