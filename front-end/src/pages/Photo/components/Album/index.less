@@ -1,0 +1,53 @@
+.Album-wrapper {
+  margin: 10px;
+  width: 174px;
+  height: 189px;
+  padding: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 2px;
+  &:hover {
+    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+  }
+  &.Dark {
+    background-color: #222;
+    .albumInfo {
+      .albumName {
+        color: rgba(256, 256, 256, 0.6);
+      }
+      .iconfont {
+        color: rgba(256, 256, 256, 0.59);
+      }
+    }
+  }
+  .cover {
+    width: 162px;
+    height: 139px;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+  }
+  .albumInfo {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 2px;
+    .albumName {
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .iconfont {
+      color: rgba(0, 0, 0, 0.59);
+    }
+    .total {
+      position: absolute;
+      right: 4px;
+      top: -30px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 22px;
+    }
+  }
+}

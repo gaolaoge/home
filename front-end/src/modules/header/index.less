@@ -1,0 +1,76 @@
+@import "../../assets/default.less";
+
+.headerWrapper {
+  width: 100vw;
+  height: 58px;
+  padding: 11px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: @page-white-bgi;
+  &.Dark {
+    background-color: @page-dark-bgi;
+  }
+
+  .pattern {
+    height: 30px;
+    width: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all 0.5s ease;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+
+    .iconfont {
+      font-size: 20px;
+      &.icon-tianqitaiyangqichuang {
+        color: @color-base-white-text;
+      }
+      &.icon-yueliang {
+        color: rgba(0, 0, 0, 0.59);
+      }
+    }
+  }
+
+  .LogoText {
+    color: @color-main-white-text;
+    font-weight: 600;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .logo {
+    cursor: pointer;
+  }
+
+  .operation {
+    display: flex;
+    align-items: center;
+    .searchInput {
+      width: 160px;
+      border-radius: 20px;
+    }
+    .nav {
+      display: flex;
+      .navItem {
+        position: relative;
+        cursor: pointer;
+        margin-left: 1.5rem;
+        transition: all 0.4s;
+        border-bottom: 2px solid rgba(0, 0, 0, 0);
+        margin-bottom: 2px;
+        font-weight: 600;
+        &.Dark {
+          color: @color-main-white-text;
+        }
+        &.active {
+          border-bottom: 2px solid #46bd87;
+        }
+      }
+    }
+  }
+}

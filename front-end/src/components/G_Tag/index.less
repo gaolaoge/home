@@ -1,0 +1,29 @@
+@import "../../assets/default.less";
+
+.tag {
+  display: inline-block;
+  color: @color-base-white-text;
+  margin-right: 6px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  &.top {
+    background-color: @color-default;
+  }
+  &.life {
+    background-color: @color-success;
+  }
+  &.note {
+    background-color: @color-warning;
+  }
+  &.trip {
+    background-color: @color-danger;
+  }
+  &.log {
+    background-color: @color-brand;
+  }
+  .iconfont {
+    font-size: 12px;
+    margin-right: 2px;
+  }
+}

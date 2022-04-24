@@ -1,0 +1,18 @@
+@import "../../assets/default.less";
+@import "../../assets/common.less";
+
+.vlog-page-wrapper {
+  .module-page-wrapper;
+  main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .module-page-wrapper.main;
+  }
+  &.Dark {
+    main {
+      .module-page-wrapper.darkMain;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.comment-action {
+  padding-left: 8px;
+  cursor: pointer;
+}
+
+[class*="-col-rtl"] .comment-action {
+  padding-right: 8px;
+  padding-left: 0;
+}
+
+.openReplyInput > .ant-comment-inner .ant-comment-actions li:nth-of-type(4) {
+  width: 100%;
+}
+
+.ant-comment-actions li:nth-of-type(4) {
+  .reply-basic-input {
+    display: none;
+    &.show {
+      display: flex;
+      margin-top: 12px;
+    }
+    .reply-basic-input-btn {
+      margin-left: 12px;
+    }
+  }
+}

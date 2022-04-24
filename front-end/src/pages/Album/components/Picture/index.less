@@ -1,0 +1,37 @@
+.picture-wrapper {
+  position: relative;
+  background-color: #2f3133;
+  height: 152px;
+  width: 152px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    .picture-title {
+      bottom: 0rem;
+    }
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .picture-title {
+    position: absolute;
+    bottom: -1.6rem;
+    padding: 0px 8px;
+    background-color: rgba(0, 0, 0, 0.59);
+    color: rgba(256, 256, 256, 0.89);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.6rem;
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+    p {
+      margin: 0px;
+    }
+  }
+}

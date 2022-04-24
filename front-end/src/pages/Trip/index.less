@@ -1,0 +1,31 @@
+@import "../../assets/default.less";
+
+.trip-page-wrapper {
+  .module-page-wrapper;
+  main {
+    .module-page-wrapper.main;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &.Dark {
+    main {
+      .module-page-wrapper.darkMain;
+    }
+  }
+}
+
+.showListBTN {
+  .module-page-wrapper.main;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  width: auto;
+}
+
+.drawer {
+  position: absolute;
+  height: calc(100%);
+}

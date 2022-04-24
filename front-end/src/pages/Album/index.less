@@ -1,0 +1,38 @@
+.album-page-wrapper {
+  position: relative;
+  width: 1200px;
+  min-height: calc(100vh - 30px * 2 - 58px);
+  margin: 30px 0px;
+  overflow: hidden;
+
+  main {
+    min-height: 100%;
+    padding: 20px;
+    background-color: rgba(256, 256, 256, 1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .album-list-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content: flex-start;
+    margin: 20px 0px calc(32px + 20px) 0px;
+    padding: 0px 24px;
+    height: 472px;
+    &.empty {
+      align-content: center;
+    }
+  }
+
+  .pagination {
+    position: absolute;
+    padding-right: 16px;
+    text-align: right;
+    bottom: 20px;
+    right: 20px;
+  }
+}

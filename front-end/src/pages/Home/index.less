@@ -1,0 +1,80 @@
+@import "../../assets/default.less";
+
+.home-page-wrapper {
+}
+
+.banner-wrapper {
+  width: 100vw;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .user {
+    padding: 30px;
+    background-color: rgba(256, 256, 256, 0.09);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out 0.2s;
+    &:hover {
+      background-color: rgba(256, 256, 256, 0.14);
+    }
+    .avatar {
+      height: 112px;
+      width: 112px;
+      border-radius: 50%;
+      border: 5px solid rgba(256, 256, 256, 1);
+      overflow: hidden;
+      margin-right: 40px;
+      img {
+        width: 100%;
+      }
+    }
+    .signature {
+      .text {
+        color: rgba(256, 256, 256, 1);
+        letter-spacing: 5px;
+        text-indent: 5px;
+      }
+      .title {
+        font-weight: 600;
+        font-size: 34px;
+      }
+      .description {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  .main-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    padding: 30px 24px;
+
+    .log-list {
+      width: 850px;
+    }
+    aside {
+      width: 288px;
+      .resume {
+        cursor: pointer;
+        margin-top: 20px;
+        .module-box;
+        background-color: @module-white-bgi;
+        &.Dark {
+          background-color: @module-dark-bgi;
+          color: @color-base-white-text;
+        }
+      }
+    }
+  }
+}

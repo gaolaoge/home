@@ -1,0 +1,49 @@
+import React, { FC } from "react";
+import { connect, useSelector } from "react-redux";
+import G_Tag from "../G_Tag";
+import "./index.less";
+import { getDateString } from "../../utils";
+import { useNavigate } from "react-router-dom";
+
+export type TagProps = "top" | "life" | "note" | "trip" | "log";
+export interface LoglistItemProps {
+  title: string;
+  date: number;
+  line?: boolean;
+  tagList: TagProps[];
+  dispatch?: any;
+  log_uuid: string;
+}
+interface FLoglistItemProps extends LoglistItemProps {}
+
+const BottomLine = () => {
+  return <div className="serialLine"></div>;
+};
+
+const LoglistItem: FC<FLoglistItemProps> = (props: FLoglistItemProps) => {
+  const { title, date, line, tagList, log_uuid } = props;
+  const webPattern = useSelector(({ global }: any) => global.webPattern);
+  const { dispatch, ...otherProps } = props;
+  const navigate = useNavigate();
+  return (
+    <div className={`logListItem ${webPattern}`}>
+      <div
+        className="title"
+        onClick={() =>
+          navigate(`/log-content/${title}`, {
+            replace: false,
+            state: { title, date, line, tagList, log_uuid }
+          })
+        }>
+        {title}
+      </div>
+      <div className="date">{getDateString(date)}</div>
+      <div className="tagList">
+        {tagList && tagList.map((tag, index) => <G_Tag key={`${title}-tag-${index}`} type={tag} />)}
+      </div>
+      {line && <BottomLine />}
+    </div>
+  );
+};
+
+export default LoglistItem;
