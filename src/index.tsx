@@ -6,7 +6,7 @@ const _Routes = require("./router/index.tsx");
 
 const app = new Koa();
 
-app.use(staticResource(path.join(__dirname, "/front-end/build")));
+app.use(staticResource(path.join(__dirname, "../front-end/build")));
 
 app.use(cors());
 
