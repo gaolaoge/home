@@ -1,5 +1,6 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, FC } from "react";
 import { useRoutes, Navigate } from "react-router-dom";
+import { Spin } from "antd";
 
 const LazyBase = lazy(() => import("../pages/Base"));
 const LazyHome = lazy(() => import("../pages/Home"));
@@ -14,104 +15,69 @@ const LazyResume = lazy(() => import("../pages/Resume"));
 const LazyVlog = lazy(() => import("../pages/Vlog"));
 const LazyLog_Content = lazy(() => import("../modules/Log-content"));
 
+const SuspenseLazyBase = () => (
+  <Suspense
+    fallback={
+      <div style={{ width: "100%", display: "flex" }}>
+        <Spin />
+      </div>
+    }>
+    <LazyBase />
+  </Suspense>
+);
+
+const CreateSuspense = (Component: React.ReactNode) => <Suspense fallback={<Spin />}>{Component}</Suspense>;
+
 const element = [
   {
     path: "/",
-    element: (
-      <Suspense fallback={"loading..."}>
-        <LazyBase />
-      </Suspense>
-    ),
+    element: <SuspenseLazyBase />,
     children: [
       {
         path: "home",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyHome />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyHome />)
       },
       {
         path: "note",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyNote />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyNote />)
       },
       {
         path: "log",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyLog />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyLog />)
       },
       {
         path: "photo",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyPhoto />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyPhoto />)
       },
       {
         path: "trip",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyTrip />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyTrip />)
       },
       {
         path: "tag",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyTag />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyTag />)
       },
       {
         path: "resume",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyResume />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyResume />)
       },
       {
         path: "vlog",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyVlog />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyVlog />)
       },
       {
         path: "album/:name",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyAlbum />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyAlbum />)
       },
       {
         path: "log-content/:name",
-        element: (
-          <Suspense fallback={"loading..."}>
-            <LazyLog_Content />
-          </Suspense>
-        )
+        element: CreateSuspense(<LazyLog_Content />)
       }
     ]
   },
   {
     path: "/login",
-    element: (
-      <Suspense fallback={"loading..."}>
-        <LazyLogin />
-      </Suspense>
-    )
+    element: CreateSuspense(<LazyLogin />)
   },
   {
     path: "*",
