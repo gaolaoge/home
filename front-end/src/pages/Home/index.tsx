@@ -15,7 +15,7 @@ interface HomeProps {}
 
 const Home: FC<HomeProps> = (props: HomeProps) => {
   const navigate = useNavigate();
-  const webPattern = useSelector((state: any) => state.webPattern);
+  const webPattern = useSelector(({ global }: any) => global.webPattern);
   const [newsList, setNewsList] = useState<LoglistItemProps[]>([]);
   const [userSignature, setUserSignature] = useState<UserInfoProps | undefined>(undefined);
 
@@ -35,6 +35,7 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
 
   return (
     <div className={"home-page-wrapper"}>
+      {/* BANNER */}
       <div className="banner-wrapper" style={{ backgroundImage: `url(${bgi})` }}>
         <div className="user">
           <div className="avatar">

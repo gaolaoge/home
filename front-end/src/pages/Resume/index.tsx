@@ -1,14 +1,13 @@
 import React, { FC } from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 import "./index.less";
-import { WebPatternProps } from "../../store/state/global";
 
 interface ResumeProps {}
-interface FResumeProps extends ResumeProps, WebPatternProps {}
+interface FResumeProps extends ResumeProps {}
 
 const Resume: FC<FResumeProps> = (props: FResumeProps) => {
-  const { webPattern } = props;
+  const webPattern = useSelector(({ global }: any) => global.webPattern);
   // TODO 读取PDF
   return (
     <div className={`resume-page-wrapper ${webPattern}`}>
@@ -17,8 +16,4 @@ const Resume: FC<FResumeProps> = (props: FResumeProps) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  webPattern: state.webPattern,
-});
-
-export default connect(mapStateToProps)(Resume);
+export default Resume;

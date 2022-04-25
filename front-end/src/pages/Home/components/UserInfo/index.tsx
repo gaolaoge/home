@@ -1,6 +1,5 @@
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import "./index.less";
-import { WebPatternProps } from "../../../../store/state/global";
 import { GithubOutlined, AlipayCircleOutlined, QqOutlined, WechatOutlined, MailFilled } from "@ant-design/icons";
 
 export interface UserInfoProps {
@@ -16,11 +15,11 @@ export interface UserInfoProps {
   WeChat?: string;
   Email?: string;
 }
-interface FUserInfoProps extends UserInfoProps, WebPatternProps {}
+interface FUserInfoProps extends UserInfoProps {}
 
 function UserInfo(props: FUserInfoProps) {
   const { avatar, userName, articlesNum, tabsNum, gitURL, ALiPay, QQ, WeChat, Email } = props;
-  const { webPattern } = props;
+  const webPattern = useSelector(({ global }: any) => global.webPattern);
   return (
     <div className={`userInfo-wrapper ${webPattern}`}>
       <div className="userHeader">
@@ -64,7 +63,4 @@ function UserInfo(props: FUserInfoProps) {
   );
 }
 
-const mapStateToProps = (state: any) => ({
-  webPattern: state.webPattern
-});
-export default connect(mapStateToProps)(UserInfo);
+export default UserInfo;

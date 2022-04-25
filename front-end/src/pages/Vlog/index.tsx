@@ -1,13 +1,12 @@
 import React, { FC } from "react";
 import "./index.less";
-import { connect } from "react-redux";
-import { WebPatternProps } from "../../store/state/global";
+import { connect, useSelector } from "react-redux";
 
 interface VlogProps {}
-interface FVlogProps extends VlogProps, WebPatternProps {}
+interface FVlogProps extends VlogProps {}
 
 const Vlog: FC<FVlogProps> = (props: FVlogProps) => {
-  const { webPattern } = props;
+  const webPattern = useSelector(({ global }: any) => global.webPattern);
   return (
     <div className={`vlog-page-wrapper ${webPattern}`}>
       <main></main>
@@ -15,8 +14,4 @@ const Vlog: FC<FVlogProps> = (props: FVlogProps) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  webPattern: state.webPattern,
-});
-
-export default connect(mapStateToProps)(Vlog);
+export default Vlog;

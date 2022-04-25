@@ -26,6 +26,7 @@ const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const postcssNormalize = require("postcss-normalize");
 
@@ -324,7 +325,7 @@ module.exports = function (webpackEnv) {
           "scheduler/tracing": "scheduler/tracing-profiling"
         }),
         ...(modules.webpackAliases || {}),
-        "~": path.resolve("src")
+        "@": path.resolve(__dirname, "../src")
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -723,7 +724,8 @@ module.exports = function (webpackEnv) {
               })
             }
           }
-        })
+        }),
+      isEnvProduction && new BundleAnalyzerPlugin()
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
@@ -739,6 +741,29 @@ module.exports = function (webpackEnv) {
     },
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
-    performance: false
+    performance: false,
+    //
+    //代码分离 防止多入口重复打包bundle
+    optimization: isEnvProduction
+      ? {
+          splitChunks: {
+            minChunks: 2, //模块至少使用次数
+            cacheGroups: {
+              vendor: {
+                name: "vendor",
+                test: /[\\/]node_modules[\\/]/,
+                chunks: "all",
+                priority: 2 //2>0  nodulesmodules里的模块将优先打包进vendor
+              },
+              commons: {
+                name: "commons", //async异步代码分割 initial同步代码分割 all同步异步分割都开启
+                chunks: "all",
+                minSize: 30000, //字节 引入的文件大于30kb才进行分割
+                priority: 0 //优先级，先打包到哪个组里面，值越大，优先级越高
+              }
+            }
+          }
+        }
+      : {}
   };
 };
