@@ -4,6 +4,7 @@ import { connect, useSelector } from "react-redux";
 import { Divider } from "antd";
 import { BarsOutlined, AppstoreOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
+import { transClasses } from "../../utils";
 
 interface NoteProps {}
 
@@ -13,7 +14,7 @@ const Note: FC<FNoteProps> = (props: FNoteProps) => {
   const webPattern = useSelector(({ global }: any) => global.webPattern);
 
   return (
-    <div className={`note-page-wrapper ${webPattern}`}>
+    <div className={transClasses("note-page-wrapper", webPattern)}>
       <main>
         <div>
           <BarsOutlined /> 分组

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { connect, useSelector } from "react-redux";
-import G_Tag from "../G_Tag";
+import Tag_ from "../Tag_";
 import "./index.less";
 import { getDateString } from "../../utils";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ const LoglistItem: FC<FLoglistItemProps> = (props: FLoglistItemProps) => {
       </div>
       <div className="date">{getDateString(date)}</div>
       <div className="tagList">
-        {tagList && tagList.map((tag, index) => <G_Tag key={`${title}-tag-${index}`} type={tag} />)}
+        {tagList && tagList.map((tag, index) => <Tag_ key={`${title}-tag-${index}`} type={tag} />)}
       </div>
       {line && <BottomLine />}
     </div>

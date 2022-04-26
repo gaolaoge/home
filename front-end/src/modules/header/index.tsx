@@ -1,11 +1,11 @@
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./index.less";
-import Logo from "@/assets/logo_header.png";
 import "@/assets/iconfont.css";
-import { Menu, Input, Dropdown, DropDownProps, Button } from "antd";
-import { SearchOutlined, CaretDownOutlined } from "@ant-design/icons";
+import { Menu, Input, Dropdown, DropDownProps } from "antd";
+import { SearchOutlined, CaretDownOutlined, MenuOutlined } from "@ant-design/icons";
+import { transClasses } from "../../utils";
 
 const { Item } = Menu;
 
@@ -21,8 +21,12 @@ const navs = [
   { name: "vlog", path: "/vlog", active: false }
 ];
 
+const gitOutreach = [
+  { name: "仓库地址", path: "https://www.antgroup.com", target: "_blank" },
+  { name: "项目地址", path: "https://www.antgroup.com", target: "_blank" }
+];
+
 function Header(props: HeaderProps) {
-  console.log("render");
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const webPattern = useSelector(({ global }: any) => global.webPattern);
@@ -53,17 +57,36 @@ function Header(props: HeaderProps) {
   };
   const dropdownProps: DropDownProps = {
     overlay: (
-      <Menu>
-        <Item key={`Menu-Item-${0}`}>
-          <a target="_blank" href="https://www.antgroup.com">
-            仓库地址
-          </a>
-        </Item>
-        <Item key={`Menu-Item-${1}`}>
-          <a target="_blank" href="https://www.antgroup.com">
-            项目地址
-          </a>
-        </Item>
+      <Menu theme={webPattern.toLowerCase()}>
+        {gitOutreach.map(({ name, path, target }, index) => (
+          <Item key={`Menu-Item-${index}`}>
+            <a target={target} href={path}>
+              {name}
+            </a>
+          </Item>
+        ))}
+      </Menu>
+    ),
+    arrow: true,
+    placement: "bottomRight"
+  };
+  const miniScreenDropdownProps: DropDownProps = {
+    overlay: (
+      <Menu theme={webPattern.toLowerCase()}>
+        {navs.map(({ name, path, active }, index) => (
+          <Item key={`Menu-Item-mini-${index}`}>
+            <div key={"mini-nav-key-" + name} onClick={() => checkNav(path)}>
+              {name}
+            </div>
+          </Item>
+        ))}
+        {gitOutreach.map(({ name, path, target }, index) => (
+          <Item key={`Menu-Item-${index}`}>
+            <a target={target} href={path}>
+              {name}
+            </a>
+          </Item>
+        ))}
       </Menu>
     ),
     arrow: true,
@@ -71,19 +94,28 @@ function Header(props: HeaderProps) {
   };
   return (
     <div className="occupied">
-      <div className={`headerWrapper ${webPattern}`}>
-        {webPattern === "Dark" && (
-          <span className={"LogoText"} onClick={() => navigate("/home")}>
+      <div className={transClasses("headerWrapper", webPattern)}>
+        <div className="L">
+          {/* 纵向导航 */}
+          <div>
+            <Dropdown {...miniScreenDropdownProps} className={"nav-column"}>
+              <MenuOutlined style={{ fontSize: "20px", color: webPattern === "Dark" ? "#fff" : "#222" }} />
+            </Dropdown>
+          </div>
+          {/* LOGO */}
+          <span className={`LogoText ${webPattern}`} onClick={() => navigate("/home")}>
             HERE IS LOGO
           </span>
-        )}
-        {webPattern === "Light" && <img src={Logo} alt="logo" className={"logo"} onClick={() => navigate("/home")} />}
+        </div>
         <div className={"operation"}>
+          {/* 切换 */}
           <div className="pattern" onClick={() => triggerPatter()}>
             {webPattern === "Dark" && <i className={"iconfont icon-tianqitaiyangqichuang"} />}
             {webPattern === "Light" && <i className={"iconfont icon-yueliang"} />}
           </div>
-          <Input className={"searchInput"} prefix={<SearchOutlined />} />
+          {/* 检索框 */}
+          <Input className={`searchInput`} prefix={<SearchOutlined />} />
+          {/* 导航-横向 */}
           <div className="nav">
             {navs.map(({ name, path, active }) => (
               <div

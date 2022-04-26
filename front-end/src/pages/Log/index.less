@@ -1,28 +1,22 @@
 @import "../../assets/default.less";
 @import "../../assets/common.less";
 
-@timeline-width: 220px;
-
 .log-page-wrapper {
   .module-page-wrapper;
   main {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     .list-wrapper,
     .timeline-wrapper {
       height: 100%;
       .module-page-wrapper.main;
     }
     .list-wrapper {
-      width: calc(100% - @timeline-width - 20px);
       flex-direction: column;
+      width: calc(100% - 20px);
       .log-select-row {
         text-align: left;
       }
-    }
-    .timeline-wrapper {
-      width: @timeline-width;
     }
   }
   &.Dark {

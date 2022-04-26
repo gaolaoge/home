@@ -3,10 +3,11 @@ import "./index.less";
 import { connect, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { SolutionOutlined } from "@ant-design/icons";
+import { Row, Col } from "antd";
 import { getBannerBGI } from "./utils";
 import LoglistItem, { LoglistItemProps } from "../../components/LoglistItem";
 import UserInfo, { UserInfoProps } from "./components/UserInfo";
-
+import { transClasses } from "../../utils";
 import { getLogList, getUserSignature } from "../../api";
 
 const bgi = getBannerBGI();
@@ -49,18 +50,24 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
       </div>
       <main>
         <div className="main-wrapper">
-          <div className="log-list">
-            {newsList.map((props, index) => (
-              <LoglistItem {...props} key={`new-item-${index}`} />
-            ))}
-          </div>
-          <aside>
-            <UserInfo {...userSignature} />
-            <div className={`resume ${webPattern}`} onClick={() => navigate("/resume")}>
-              <SolutionOutlined />
-              {"  职业履历"}
-            </div>
-          </aside>
+          <Row gutter={{ xs: 8, sm: 16, md: 18, lg: 20 }}>
+            <Col xs={24} sm={14} md={16} lg={18}>
+              <div className="log-list">
+                {newsList.map((props, index) => (
+                  <LoglistItem {...props} key={`new-item-${index}`} />
+                ))}
+              </div>
+            </Col>
+            <Col xs={24} sm={10} md={8} lg={6}>
+              <aside>
+                <UserInfo {...userSignature} />
+                <div className={transClasses("resume", webPattern)} onClick={() => navigate("/resume")}>
+                  <SolutionOutlined />
+                  {"  职业履历"}
+                </div>
+              </aside>
+            </Col>
+          </Row>
         </div>
       </main>
     </div>

@@ -2,7 +2,6 @@ import react, { FC } from "react";
 import "./index.less";
 import { connect } from "react-redux";
 import { Image } from "antd";
-import { WebPatternProps } from "../../../../store/state/global";
 
 export interface PictureProps {
   imgSrc: string;
@@ -10,7 +9,7 @@ export interface PictureProps {
   imgDescription?: string;
   imgUUid: string;
 }
-interface FPictureProps extends PictureProps, WebPatternProps {}
+interface FPictureProps extends PictureProps {}
 
 const Picture: FC<FPictureProps> = (props: FPictureProps) => {
   const { imgSrc, imgTitle, imgDescription } = props;
@@ -24,7 +23,4 @@ const Picture: FC<FPictureProps> = (props: FPictureProps) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  webPattern: state.webPattern,
-});
-export default connect(mapStateToProps)(Picture);
+export default Picture;

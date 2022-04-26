@@ -1,9 +1,24 @@
 import react, { FC } from "react";
-import { Empty, Space, PageHeader, Descriptions, Avatar, AvatarProps, Button, Tabs, Statistic, Pagination } from "antd";
+import {
+  Row,
+  Col,
+  Empty,
+  Space,
+  PageHeader,
+  Descriptions,
+  Avatar,
+  AvatarProps,
+  Button,
+  Tabs,
+  Statistic,
+  Pagination,
+  PaginationProps
+} from "antd";
 import "./index.less";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Picture, { PictureProps } from "./components/Picture";
+import { getDateText, transClasses } from "../../utils";
 
 const { Item } = Descriptions;
 const { TabPane } = Tabs;
@@ -145,7 +160,7 @@ const AlbumInfo = {
   effectiveTime: Date.now(),
   albumDescription: "here is description",
   theCategory: "某一个",
-  total: 99,
+  total: 999,
   pageSize: 21,
   current: 1,
   caller: 125,
@@ -158,12 +173,35 @@ interface FAlbumProps extends AlbumProps {}
 
 const Album: FC<FAlbumProps> = (props: FAlbumProps) => {
   const { hash, search, state } = useLocation();
-  const webPattern = useSelector((state: any) => state.webPattern);
+  const webPattern = useSelector(({ global }: any) => global.webPattern);
   const { albumUUID } = state;
   const avatarProps: AvatarProps = {
     src: AlbumInfo.coverSrc,
     shape: "square",
     size: 40
+  };
+  const paginationProps: PaginationProps = {
+    size: "small",
+    total: AlbumInfo.total,
+    showTotal: (total: any) => `共 ${total} 张图片`
+  };
+  const getAlburNode = () => {
+    const havePic = pictureList.length > 0;
+    if (havePic) {
+      return (
+        <Space wrap>
+          {pictureList.map((props, index) => (
+            <Picture {...props} key={`picture-item-${index}`} />
+          ))}
+        </Space>
+      );
+    } else {
+      return (
+        <div className="emptyAlburWrapper">
+          <Empty />
+        </div>
+      );
+    }
   };
   const pageHeaderProps = {
     avatar: avatarProps,
@@ -177,57 +215,55 @@ const Album: FC<FAlbumProps> = (props: FAlbumProps) => {
     ],
     footer: (
       <Tabs defaultActiveKey="1">
-        <TabPane tab="Details" key="1" />
-        <TabPane tab="Rule" key="2" />
+        <TabPane tab="Details" key="1">
+          <div className={`album-list-body`}>{getAlburNode()}</div>
+          <Space>
+            <Pagination {...paginationProps} className={"pagination"} />
+          </Space>
+        </TabPane>
+        <TabPane tab="Rule" key="2">
+          here is rule
+        </TabPane>
       </Tabs>
     )
   };
-  const paginationProps = {
-    total: AlbumInfo.total,
-    showSizeChanger: true,
-    showQuickJumper: true,
-    showTotal: (total: any) => `共 ${total} 张图片`
-  };
+
+  const siteMode = webPattern === "Dark" ? "dark" : "light";
   return (
-    <div className="album-page-wrapper">
+    <div className={transClasses("album-page-wrapper", siteMode)}>
       <main>
-        <PageHeader {...pageHeaderProps}>
-          <div style={{ display: "flex" }}>
-            <Descriptions size="small" column={2}>
-              <Item label="创建人">{AlbumInfo.created}</Item>
-              <Item label="所属分类">{AlbumInfo.theCategory}</Item>
-              <Item label="创建时间">{AlbumInfo.creationTime}</Item>
-              <Item label="最近修改时间">{AlbumInfo.effectiveTime}</Item>
-              <Item label="关键字">Gonghu Road, Xihu District, Hangzhou, Zhejiang, China</Item>
-            </Descriptions>
-            <div
-              style={{
-                display: "flex",
-                width: "max-content",
-                justifyContent: "flex-end"
-              }}>
-              <Statistic
-                title="访客"
-                value={27}
+        <PageHeader {...pageHeaderProps} ghost={false}>
+          <Row justify="space-between">
+            <Col md={24} lg={22}>
+              {/* 相册信息 */}
+              <Descriptions size="small" column={{ xs: 1, sm: 1, md: 2, lg: 2 }}>
+                <Item label="创建人">{AlbumInfo.created}</Item>
+                <Item label="所属分类">{AlbumInfo.theCategory}</Item>
+                <Item label="创建时间">{getDateText(AlbumInfo.creationTime)}</Item>
+                <Item label="最近修改时间">{getDateText(AlbumInfo.effectiveTime)}</Item>
+                <Item label="关键字">Gonghu Road, Xihu District, Hangzhou, Zhejiang, China</Item>
+              </Descriptions>
+            </Col>
+            <Col lg={2}>
+              {/* 相册互动记录 */}
+              <div
                 style={{
-                  marginRight: 32
-                }}
-              />
-              <Statistic title="点赞" value={16} />
-            </div>
-          </div>
+                  display: "flex",
+                  width: "max-content",
+                  justifyContent: "flex-end"
+                }}>
+                <Statistic
+                  title="访客"
+                  value={27}
+                  style={{
+                    marginRight: 32
+                  }}
+                />
+                <Statistic title="点赞" value={16} />
+              </div>
+            </Col>
+          </Row>
         </PageHeader>
-        <div className={`album-list-body ${pictureList.length && "empty"}`}>
-          {pictureList.length && (
-            <Space wrap>
-              {pictureList.map((props, index) => (
-                <Picture {...props} key={`picture-item-${index}`} />
-              ))}
-            </Space>
-          )}
-          {!pictureList.length && <Empty />}
-        </div>
-        <Pagination {...paginationProps} className={"pagination"} />
       </main>
     </div>
   );

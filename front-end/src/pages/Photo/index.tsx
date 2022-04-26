@@ -3,6 +3,7 @@ import { connect, useSelector } from "react-redux";
 import "./index.less";
 import AblumCategory, { AblumCategoryProps } from "./components/AlbumCategory";
 import Album, { AlbumProps } from "./components/Album";
+import { transClasses } from "../../utils";
 
 interface PhotoPageProps {}
 interface FPhotoPageProps extends PhotoPageProps {}
@@ -21,7 +22,7 @@ const AblumClassifyList = [
 const PhotoPage: FC<FPhotoPageProps> = (props: FPhotoPageProps) => {
   const webPattern = useSelector(({ global }: any) => global.webPattern);
   return (
-    <div className={`photo-page-wrapper ${webPattern}`}>
+    <div className={transClasses("photo-page-wrapper", webPattern)}>
       <main>
         {AblumClassifyList.map((props, index) => (
           <AblumCategory {...props} key={`AblumCategory-item-${index}`} />

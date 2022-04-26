@@ -1,8 +1,12 @@
+@imgMDSize: 142px;
+@imgSMSize: 130px;
+@imgXSSize: 98px;
+
 .picture-wrapper {
   position: relative;
   background-color: #2f3133;
-  height: 152px;
-  width: 152px;
+  height: @imgMDSize;
+  width: @imgMDSize;
   cursor: pointer;
   overflow: hidden;
 
@@ -33,5 +37,19 @@
     p {
       margin: 0px;
     }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .picture-wrapper {
+    height: @imgSMSize;
+    width: @imgSMSize;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .picture-wrapper {
+    height: @imgXSSize;
+    width: @imgXSSize;
   }
 }
