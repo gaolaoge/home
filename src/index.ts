@@ -2,7 +2,7 @@ const Koa = require("koa");
 const staticResource = require("koa-static");
 const cors = require("koa2-cors");
 const path = require("path");
-const _Routes = require("./router");
+const _Routes = require("./router/index.ts");
 
 const app = new Koa();
 
