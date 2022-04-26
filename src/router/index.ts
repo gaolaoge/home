@@ -1,7 +1,7 @@
 const Router = require("koa-router");
 
-const HomeRoutes = require("./home.tsx");
-const LogRoutes = require("./log.tsx");
+const HomeRoutes = require("./components/home.ts");
+const LogRoutes = require("./components/log.ts");
 
 const router = new Router();
 

@@ -10,7 +10,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
   return (
     <div className={`loading-page ${shutLoading ? "shut" : null}`}>
       <div className="loading-box"></div>
-      <p>稍等片刻...</p>
+      <p>没哭，就算胜利</p>
     </div>
   );
 };

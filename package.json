@@ -2,10 +2,10 @@
   "name": "personal_ws_after-end",
   "version": "1.0.0",
   "description": "",
-  "main": "index.tsx",
+  "main": "index.ts",
   "scripts": {
-    "start": "node src/index.tsx",
-    "dev": "nodemon --watch src --delay 1000ms src/index.tsx"
+    "start": "node src/index.ts",
+    "dev": "nodemon --watch src --delay 1000ms src/index.ts"
   },
   "keywords": [],
   "author": "gaoge",
