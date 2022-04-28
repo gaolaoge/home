@@ -4,6 +4,7 @@ import Tag_ from "../Tag_";
 import "./index.less";
 import { getDateString } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import { transClasses } from "../../utils";
 
 export type TagProps = "top" | "life" | "note" | "trip" | "log";
 export interface LoglistItemProps {
@@ -26,7 +27,7 @@ const LoglistItem: FC<FLoglistItemProps> = (props: FLoglistItemProps) => {
   const { dispatch, ...otherProps } = props;
   const navigate = useNavigate();
   return (
-    <div className={`logListItem ${webPattern}`}>
+    <div className={transClasses("logListItem", "MODULE", webPattern)}>
       <div
         className="title"
         onClick={() =>

@@ -1,15 +1,13 @@
-@import "../../assets/default.less";
+@import "../../assets/style/index.less";
 
 .photo-page-wrapper {
-  .module-page-wrapper;
   main {
-    .module-page-wrapper.main;
     flex-direction: column;
     justify-content: left;
   }
   &.Dark {
     main {
-      .module-page-wrapper.darkMain;
+      background-color: @MAIN_BGC_DARK;
     }
   }
 }

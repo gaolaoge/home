@@ -1,12 +1,16 @@
-@imgMDSize: 142px;
-@imgSMSize: 130px;
-@imgXSSize: 98px;
+@imgMAXSize: 140px;
+@imgLGSize: 143px;
+@imgMDSize: 130px;
+@imgSMSize: 128px;
+@imgXSSize: 80px;
+@imgXXSSize: 72px;
+@imgMINISize: 82px;
 
 .picture-wrapper {
   position: relative;
   background-color: #2f3133;
-  height: @imgMDSize;
-  width: @imgMDSize;
+  height: @imgMAXSize;
+  width: @imgMAXSize;
   cursor: pointer;
   overflow: hidden;
 
@@ -40,16 +44,37 @@
   }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
+  .picture-wrapper {
+    height: @imgLGSize;
+    width: @imgLGSize;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .picture-wrapper {
     height: @imgSMSize;
     width: @imgSMSize;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 425px) {
   .picture-wrapper {
     height: @imgXSSize;
     width: @imgXSSize;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .picture-wrapper {
+    height: @imgXXSSize;
+    width: @imgXXSSize;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .picture-wrapper {
+    height: @imgMINISize;
+    width: @imgMINISize;
   }
 }

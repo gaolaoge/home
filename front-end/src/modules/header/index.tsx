@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./index.less";
-import "@/assets/iconfont.css";
+import "@/assets/style/iconfont.css";
 import { Menu, Input, Dropdown, DropDownProps } from "antd";
 import { SearchOutlined, CaretDownOutlined, MenuOutlined } from "@ant-design/icons";
 import { transClasses } from "../../utils";

@@ -1,9 +1,7 @@
-@import "../../assets/default.less";
+@import "../../assets/style/index.less";
 
 .trip-page-wrapper {
-  .module-page-wrapper;
   main {
-    .module-page-wrapper.main;
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -11,13 +9,12 @@
 
   &.Dark {
     main {
-      .module-page-wrapper.darkMain;
+      background-color: @MAIN_BGC_DARK;
     }
   }
 }
 
 .showListBTN {
-  .module-page-wrapper.main;
   position: absolute;
   top: 20px;
   left: 20px;

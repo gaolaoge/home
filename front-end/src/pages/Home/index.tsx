@@ -18,7 +18,11 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
   const navigate = useNavigate();
   const webPattern = useSelector(({ global }: any) => global.webPattern);
   const [newsList, setNewsList] = useState<LoglistItemProps[]>([]);
-  const [userSignature, setUserSignature] = useState<UserInfoProps | undefined>(undefined);
+  const [userSignature, setUserSignature] = useState<UserInfoProps>({
+    avatar: "",
+    title: "",
+    signature: ""
+  });
 
   useEffect(() => {
     // 日志列表
@@ -40,11 +44,11 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
       <div className="banner-wrapper" style={{ backgroundImage: `url(${bgi})` }}>
         <div className="user">
           <div className="avatar">
-            <img src={userSignature && userSignature.avatar} alt="avatar" />
+            <img src={userSignature.avatar} alt="avatar" />
           </div>
           <div className="signature">
-            <div className="title text">{userSignature && userSignature.title}</div>
-            <div className="description text">{userSignature && userSignature.signature}</div>
+            <div className="title text">{userSignature.title}</div>
+            <div className="description text">{userSignature.signature}</div>
           </div>
         </div>
       </div>
@@ -61,7 +65,7 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
             <Col xs={24} sm={10} md={8} lg={6}>
               <aside>
                 <UserInfo {...userSignature} />
-                <div className={transClasses("resume", webPattern)} onClick={() => navigate("/resume")}>
+                <div className={transClasses("resume", "MODULE", webPattern)} onClick={() => navigate("/resume")}>
                   <SolutionOutlined />
                   {"  职业履历"}
                 </div>

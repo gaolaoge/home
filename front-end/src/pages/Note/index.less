@@ -1,18 +1,15 @@
-@import "../../assets/default.less";
-@import "../../assets/common.less";
+@import "../../assets/style/index.less";
 
 .note-page-wrapper {
-  .module-page-wrapper;
   main {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    .module-page-wrapper.main;
   }
   &.Dark {
     main {
-      .module-page-wrapper.darkMain;
+      background-color: @MAIN_BGC_DARK;
     }
   }
 }

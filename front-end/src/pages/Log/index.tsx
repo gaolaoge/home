@@ -4,6 +4,7 @@ import { connect, useSelector } from "react-redux";
 import { Input, Button, DatePicker, Select, Space, Timeline, Divider, Spin, Row, Col } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import LoglistItem, { LoglistItemProps } from "../../components/LoglistItem";
+import { transClasses, currentInnerWidth } from "../../utils";
 
 import { getLogList } from "../../api";
 
@@ -23,6 +24,11 @@ const Log: FC<FLogProps> = (props: FLogProps) => {
   const [newsList, setNewsList] = useState<LoglistItemProps[]>([]);
   const webPattern = useSelector(({ global }: any) => global.webPattern);
 
+  const [windowInnerWidth] = currentInnerWidth();
+  // 筛选组件size
+  const FormItemSize = windowInnerWidth > 440 ? "middle" : "small";
+  const SpaceSize = windowInnerWidth > 440 ? 16 : 10;
+
   useEffect(() => {
     // 日志列表滚动追加
     return;
@@ -40,25 +46,32 @@ const Log: FC<FLogProps> = (props: FLogProps) => {
   }, []);
 
   return (
-    <div className={`log-page-wrapper ${webPattern}`}>
+    <div className={transClasses("log-page-wrapper", "PAGE_WRAPPER", webPattern)}>
       <main>
         <Row gutter={{ lg: 0 }} justify={"space-between"} style={{ width: " 100%", margin: "0px" }}>
           <Col md={24} lg={19}>
             {/* 视窗 */}
-            <div className="list-wrapper">
+            <div className="list-wrapper PAGE_WRAPPER_MAIN">
               <div className="log-select-row">
-                <Space size={16} wrap>
+                <Space size={SpaceSize} wrap>
                   <div>
-                    <label htmlFor="input-logList">关键字：</label>
-                    <Input id={"input-logList"} style={{ width: 120 }} />
+                    <label className="item-label" htmlFor="input-logList">
+                      关键字：
+                    </label>
+                    <Input size={FormItemSize} id={"input-logList"} placeholder={"检索关键字"} style={{ width: 120 }} />
                   </div>
                   <div>
-                    <label htmlFor="date-logList">日期区间：</label>
-                    <RangePicker id={"date-logList"} />
+                    <label className="item-label" htmlFor="date-logList">
+                      日期区间：
+                    </label>
+                    <RangePicker size={FormItemSize} id={"date-logList"} />
                   </div>
                   <div>
-                    <label htmlFor="tag-logList">标签：</label>
+                    <label className="item-label" htmlFor="tag-logList">
+                      标签：
+                    </label>
                     <Select
+                      size={FormItemSize}
                       mode={"multiple"}
                       style={{ width: 134 }}
                       maxTagCount={1}
@@ -72,7 +85,7 @@ const Log: FC<FLogProps> = (props: FLogProps) => {
                     </Select>
                   </div>
                   <div>
-                    <Button children={"复位"} type={"primary"} />
+                    <Button size={FormItemSize} children={"复位"} type={"primary"} />
                   </div>
                 </Space>
               </div>
@@ -86,7 +99,7 @@ const Log: FC<FLogProps> = (props: FLogProps) => {
           </Col>
           <Col xs={0} sm={0} md={0} lg={5}>
             {/* 时间轴 */}
-            <div className="timeline-wrapper">
+            <div className="timeline-wrapper PAGE_WRAPPER_MAIN">
               <Timeline>
                 {timelineList.map((item, index) => (
                   <Item key={`timeline-item-key=${index}`}>{item}</Item>

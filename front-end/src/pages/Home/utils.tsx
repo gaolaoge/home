@@ -1,13 +1,13 @@
-import bg1 from "../../assets/home_banner_bg1.jpeg";
-import bg2 from "../../assets/home_banner_bg2.jpg";
-import bg3 from "../../assets/home_banner_bg3.jpeg";
-import bg4 from "../../assets/home_banner_bg4.jpeg";
-import bg5 from "../../assets/home_banner_bg5.jpeg";
-import bg6 from "../../assets/home_banner_bg6.jpeg";
-import bg7 from "../../assets/home_banner_bg7.jpeg";
-import bg8 from "../../assets/home_banner_bg8.jpeg";
-import bg9 from "../../assets/home_banner_bg9.jpeg";
-import bg10 from "../../assets/home_banner_bg10.jpeg";
+import bg1 from "../../assets/images/home_banner_bg1.jpeg";
+import bg2 from "../../assets/images/home_banner_bg2.jpg";
+import bg3 from "../../assets/images/home_banner_bg3.jpeg";
+import bg4 from "../../assets/images/home_banner_bg4.jpeg";
+import bg5 from "../../assets/images/home_banner_bg5.jpeg";
+import bg6 from "../../assets/images/home_banner_bg6.jpeg";
+import bg7 from "../../assets/images/home_banner_bg7.jpeg";
+import bg8 from "../../assets/images/home_banner_bg8.jpeg";
+import bg9 from "../../assets/images/home_banner_bg9.jpeg";
+import bg10 from "../../assets/images/home_banner_bg10.jpeg";
 
 function getBannerBGI() {
   const gbIndex = Math.floor(Math.random() * (10 - 1) + 1);

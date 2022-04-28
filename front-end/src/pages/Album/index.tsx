@@ -18,7 +18,7 @@ import "./index.less";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Picture, { PictureProps } from "./components/Picture";
-import { getDateText, transClasses } from "../../utils";
+import { getDateText, transClasses, currentInnerWidth } from "../../utils";
 
 const { Item } = Descriptions;
 const { TabPane } = Tabs;
@@ -174,13 +174,23 @@ interface FAlbumProps extends AlbumProps {}
 const Album: FC<FAlbumProps> = (props: FAlbumProps) => {
   const { hash, search, state } = useLocation();
   const webPattern = useSelector(({ global }: any) => global.webPattern);
-  const { albumUUID } = state;
+  // const { albumUUID } = state;
+  const [windowInnerWidth] = currentInnerWidth();
+
+  // 页脚是否为简单模式
+  const SimplePagination = windowInnerWidth > 440 ? false : true;
+  // 按钮是否为mini模式
+  const ButtonSize = windowInnerWidth > 440 ? "middle" : "small";
+  // 按钮fontSize
+  const ButtonFontSize = windowInnerWidth > 440 ? "14px" : "12px";
+
   const avatarProps: AvatarProps = {
     src: AlbumInfo.coverSrc,
     shape: "square",
     size: 40
   };
   const paginationProps: PaginationProps = {
+    simple: SimplePagination,
     size: "small",
     total: AlbumInfo.total,
     showTotal: (total: any) => `共 ${total} 张图片`
@@ -209,9 +219,15 @@ const Album: FC<FAlbumProps> = (props: FAlbumProps) => {
     title: AlbumInfo.albumTitle,
     onBack: () => window.history.back(),
     extra: [
-      <Button key="3">复制链接</Button>,
-      <Button key="2">生成分享图</Button>,
-      <Button key="1">生成分享二维码</Button>
+      <Button size={ButtonSize} style={{ fontSize: ButtonFontSize }} key="3">
+        复制链接
+      </Button>,
+      <Button size={ButtonSize} style={{ fontSize: ButtonFontSize }} key="2">
+        生成分享图
+      </Button>,
+      <Button size={ButtonSize} style={{ fontSize: ButtonFontSize }} key="1">
+        生成分享二维码
+      </Button>
     ],
     footer: (
       <Tabs defaultActiveKey="1">
@@ -230,8 +246,8 @@ const Album: FC<FAlbumProps> = (props: FAlbumProps) => {
 
   const siteMode = webPattern === "Dark" ? "dark" : "light";
   return (
-    <div className={transClasses("album-page-wrapper", siteMode)}>
-      <main>
+    <div className={transClasses("album-page-wrapper", "PAGE_WRAPPER", siteMode)}>
+      <main className="PAGE_WRAPPER_MAIN">
         <PageHeader {...pageHeaderProps} ghost={false}>
           <Row justify="space-between">
             <Col md={24} lg={22}>

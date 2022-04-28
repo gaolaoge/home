@@ -4,6 +4,7 @@ import { connect, useSelector } from "react-redux";
 import { Modal, Drawer, Tree, Input } from "antd";
 import { UnorderedListOutlined } from "@ant-design/icons";
 import { Map, Markers } from "react-amap";
+import { transClasses } from "../../utils";
 
 const { Search } = Input;
 
@@ -70,9 +71,11 @@ const Trip = (props: FTripProps) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <div className={`trip-page-wrapper ${webPattern}`}>
-      <main>
-        {!listVisible && <UnorderedListOutlined className={"showListBTN"} onClick={() => setListVisible(true)} />}
+    <div className={transClasses("trip-page-wrapper", "PAGE_WRAPPER", webPattern)}>
+      <main className="PAGE_WRAPPER_MAIN">
+        {!listVisible && (
+          <UnorderedListOutlined className={"showListBTN PAGE_WRAPPER_MAIN"} onClick={() => setListVisible(true)} />
+        )}
         <Drawer
           title="足迹列表"
           placement="right"

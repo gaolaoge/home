@@ -1,7 +1,8 @@
 import react, { FC } from "react";
 import "./index.less";
-import { Tag, Divider } from "antd";
+import { Tag, Space } from "antd";
 import { connect, useSelector } from "react-redux";
+import { transClasses } from "../../utils";
 
 interface TagProps {}
 interface FTagProps extends TagProps {}
@@ -9,10 +10,10 @@ interface FTagProps extends TagProps {}
 const Tags: FC<FTagProps> = (props: FTagProps) => {
   const webPattern = useSelector(({ global }: any) => global.webPattern);
   return (
-    <div className={`tag-page-wrapper ${webPattern}`}>
-      <main>
-        <div className="allTags">
-          <div>
+    <div className={transClasses("tag-page-wrapper", "PAGE_WRAPPER", webPattern)}>
+      <main className="">
+        <div className="allTags PAGE_WRAPPER_MAIN">
+          <Space wrap={true}>
             <Tag color="magenta">magenta</Tag>
             <Tag color="red">red</Tag>
             <Tag color="volcano">volcano</Tag>
@@ -24,9 +25,9 @@ const Tags: FC<FTagProps> = (props: FTagProps) => {
             <Tag color="blue">blue</Tag>
             <Tag color="geekblue">geekblue</Tag>
             <Tag color="purple">purple</Tag>
-          </div>
+          </Space>
         </div>
-        <div className="content"></div>
+        <div className="content PAGE_WRAPPER_MAIN"></div>
       </main>
     </div>
   );

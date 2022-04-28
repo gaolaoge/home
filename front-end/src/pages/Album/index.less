@@ -1,20 +1,9 @@
-@import "../../assets/default.less";
+@import "../../assets/style/index.less";
 
 .album-page-wrapper {
-  position: relative;
-  max-width: 1200px;
-  width: 100%;
-  min-height: calc(100vh - 30px * 2 - 58px);
-  margin: 30px 18px;
-  overflow: hidden;
-
   main {
     min-height: 100%;
-    padding: 20px;
     margin: 0px 0px;
-    background-color: rgba(256, 256, 256, 1);
-    border-radius: 8px;
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
   }
@@ -39,7 +28,7 @@
 
   &.dark {
     main {
-      .module-page-wrapper.darkMain;
+      background-color: @MAIN_BGC_DARK;
     }
   }
 }

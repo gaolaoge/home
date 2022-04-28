@@ -22,8 +22,8 @@ const AblumClassifyList = [
 const PhotoPage: FC<FPhotoPageProps> = (props: FPhotoPageProps) => {
   const webPattern = useSelector(({ global }: any) => global.webPattern);
   return (
-    <div className={transClasses("photo-page-wrapper", webPattern)}>
-      <main>
+    <div className={transClasses("photo-page-wrapper", "PAGE_WRAPPER", webPattern)}>
+      <main className="PAGE_WRAPPER_MAIN">
         {AblumClassifyList.map((props, index) => (
           <AblumCategory {...props} key={`AblumCategory-item-${index}`} />
         ))}

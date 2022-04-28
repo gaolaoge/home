@@ -1,0 +1,46 @@
+.ant-spin {
+  margin: 20px auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .App .album-page-wrapper .album-list-body {
+    margin-top: 14px;
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ant-page-header {
+    padding: 16px 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .ant-page-header {
+    padding: 12px 16px;
+  }
+  .ant-descriptions-item-label,
+  .ant-descriptions-item-content {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .ant-page-header {
+    padding: 8px 8px;
+  }
+  .App .album-page-wrapper .album-list-body {
+    margin-top: 12px;
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .ant-page-header {
+    padding: 8px;
+  }
+  .App .album-page-wrapper .album-list-body {
+    margin-top: 10px;
+    padding: 0px;
+  }
+}

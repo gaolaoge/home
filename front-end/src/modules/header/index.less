@@ -1,5 +1,4 @@
-// @import "@/assets/default.less";
-@import "../../assets/default.less";
+@import "../../assets/style/index.less";
 
 .occupied {
   position: relative;
@@ -103,7 +102,7 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
   .searchInput {
     width: 80px !important;
   }
@@ -118,5 +117,11 @@
   }
   .nav-column {
     display: block !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .searchInput {
+    display: none;
   }
 }

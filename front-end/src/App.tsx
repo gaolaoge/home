@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import "./App.less";
 import Router from "./router";
-import "./assets/default.less";
 import Loading from "./components/Loading";
 
 interface AppProps {}

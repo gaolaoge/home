@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 // 根据时间戳得到日期
 export function getDateString(timestamp: string | number) {
   if (!timestamp) return false;
@@ -24,4 +26,38 @@ export function getDateText(timestamp: number) {
   let m = date.getMinutes() > 9 ? date.getMinutes() + ":" : "0" + date.getMinutes() + ":";
   let s = date.getSeconds() > 9 ? date.getSeconds() : "0" + date.getSeconds();
   return Y + M + D + h + m + s;
+}
+
+/**
+ * 对视窗的监听会导致引用得组件因此频繁更新视图，
+ * 建议对使用的组件做更新优化
+ */
+// 监听窗口高度变化
+export function currentInnerHeight() {
+  const val = document.documentElement.clientHeight;
+  const hook = useState(val);
+  const resizeUpdate = (e: any) => {
+    let h = e.target?.innerHeight;
+    hook[1](h);
+  };
+  window.addEventListener("resize", resizeUpdate);
+  useEffect(() => {
+    return window.removeEventListener("resize", resizeUpdate);
+  }, []);
+  return hook;
+}
+
+// 监听窗口宽度变化
+export function currentInnerWidth() {
+  const val = document.documentElement.clientWidth;
+  const hook = useState(val);
+  const resizeUpdate = (e: any) => {
+    let h = e.target?.innerWidth;
+    hook[1](h);
+  };
+  window.addEventListener("resize", resizeUpdate);
+  useEffect(() => {
+    return window.removeEventListener("resize", resizeUpdate);
+  }, []);
+  return hook;
 }

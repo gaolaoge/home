@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { connect, useSelector } from "react-redux";
+import { transClasses } from "../../utils";
 
 import "./index.less";
 
@@ -10,8 +11,8 @@ const Resume: FC<FResumeProps> = (props: FResumeProps) => {
   const webPattern = useSelector(({ global }: any) => global.webPattern);
   // TODO 读取PDF
   return (
-    <div className={`resume-page-wrapper ${webPattern}`}>
-      <main>here is resume</main>
+    <div className={transClasses("resume-page-wrapper", "PAGE_WRAPPER", webPattern)}>
+      <main className="PAGE_WRAPPER_MAIN">here is resume</main>
     </div>
   );
 };

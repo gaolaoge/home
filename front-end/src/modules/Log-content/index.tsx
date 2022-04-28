@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
 import "./index.less";
-import { Input, Avatar, Button, Form, Comment } from "antd";
+import { Row, Col, Input, Avatar, Button, Form, Comment } from "antd";
 import { MessageOutlined, LikeOutlined, ForkOutlined, SwitcherOutlined, CaretDownOutlined } from "@ant-design/icons";
 import { connect, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Comment_, { GCommentProps } from "../../components/Comment_";
 import articleContent from "./content";
-import { getDateString } from "../../utils";
+import { getDateString, transClasses } from "../../utils";
 
 interface LogInfoProps {
   liked: number;
@@ -114,6 +114,7 @@ const Log_Content: FC<FLogContentProps> = (props: FLogContentProps) => {
   const { state } = useLocation();
   const { title, date, tagList, log_uuid } = state;
   const [loading, setLoading] = useState(true);
+  const siteMode = webPattern === "Dark" ? "dark" : "light";
   const [logInfo, setLogInfo] = useState<LogInfoProps>({
     liked: 0,
     commended: 0,
@@ -143,7 +144,7 @@ const Log_Content: FC<FLogContentProps> = (props: FLogContentProps) => {
   // 操作列
   const getOperateList = () => {
     return (
-      <>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         <div className={"item"}>
           <LikeOutlined />
           赞({logInfo.liked})
@@ -164,7 +165,7 @@ const Log_Content: FC<FLogContentProps> = (props: FLogContentProps) => {
           更多
           <CaretDownOutlined />
         </div>
-      </>
+      </div>
     );
   };
 
@@ -201,29 +202,32 @@ const Log_Content: FC<FLogContentProps> = (props: FLogContentProps) => {
   const checkLog = (log_uuid: number) => {};
 
   return (
-    <div className={`logContent-page-wrapper ${webPattern}`}>
-      <main>
+    <div className={transClasses("logContent-page-wrapper", "PAGE_WRAPPER", siteMode)}>
+      <main className="PAGE_WRAPPER_MAIN">
         <div className="art-header">
-          <div className="row">
-            <div className="art-type">[顶]</div>
-            <div className="art-title">{title}</div>
-            <div className="art-date-time">{getDateString(date)}</div>
-            <div className="art-page-views">阅读({logInfo.readed})</div>
+          <div className="title">
+            <span className="art-type">[顶]</span>
+            <span className="art-title">{title}</span>
           </div>
-          <div className="row o">
-            <div className="operate">{getOperateList()}</div>
-            <div className="page-turn">{getPageTurn()}</div>
+          <div className="date">
+            <span className="art-date-time">{getDateString(date)}</span>
+            <span className="art-page-views">阅读({logInfo.readed})</span>
           </div>
+          <Row className="logOperate" justify={"space-between"}>
+            <Col className="operate">{getOperateList()}</Col>
+            <Col className="page-turn">{getPageTurn()}</Col>
+          </Row>
         </div>
+        {/* 内容 */}
         <article>
           <div className="article-title">{title}</div>
           {articleContent}
         </article>
         <div className="art-footer">
-          <div className="row o">
-            <div className="operate">{getOperateList()}</div>
-            <div className="page-turn">{getPageTurn()}</div>
-          </div>
+          <Row className="logOperate" justify={"space-between"}>
+            <Col className="operate">{getOperateList()}</Col>
+            <Col className="page-turn">{getPageTurn()}</Col>
+          </Row>
         </div>
         <ArticleCommentList commentList={commentList} />
       </main>

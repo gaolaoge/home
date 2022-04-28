@@ -14,8 +14,8 @@ const Note: FC<FNoteProps> = (props: FNoteProps) => {
   const webPattern = useSelector(({ global }: any) => global.webPattern);
 
   return (
-    <div className={transClasses("note-page-wrapper", webPattern)}>
-      <main>
+    <div className={transClasses("note-page-wrapper", "PAGE_WRAPPER", webPattern)}>
+      <main className="PAGE_WRAPPER_MAIN">
         <div>
           <BarsOutlined /> 分组
           <AppstoreOutlined /> 图标平铺
