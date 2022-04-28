@@ -2,13 +2,44 @@
 
 .resume-page-wrapper {
   main {
+    position: relative;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
   }
   &.Dark {
     main {
       background-color: @MAIN_BGC_DARK;
     }
+  }
+}
+
+.pageTool {
+  position: absolute;
+  bottom: 40px;
+  background: rgb(66, 66, 66);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 15px;
+  .anticon {
+    padding: 5px;
+    margin: 0 5px;
+    &:hover {
+      background: #333;
+    }
+  }
+  input {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    margin-right: 10px;
+    height: 24px;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 }

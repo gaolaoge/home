@@ -1,17 +1,17 @@
 {
-	"compileOptions": {
+  "compileOptions": {
     "experimentalDecorators": true,
-    "target": "ES5", 
+    "target": "ES5",
     "module": "commonJs",
-    "allowJs": true, 
+    "allowJs": true,
     "declaration": true,
     "outDir": "dist",
-    "strict": true, 
-    "moduleResolution": "node", 
-    "inlineSourceMap": true, 
-    "forceConsistentCasingInFileNames": true
-	},
-	"compileOnSave": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "inlineSourceMap": true
+  },
+  "compileOnSave": true,
   "include": ["src/**/*"],
   "exclude": ["node_module/**/*", "**/*.test.ts"]
 }
