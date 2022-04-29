@@ -30,6 +30,7 @@ jobs:
   install-cypress:
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.17.0-chrome88-ff89
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v3
