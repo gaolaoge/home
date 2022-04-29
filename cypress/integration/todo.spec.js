@@ -6,6 +6,6 @@ describe("初始化测试", () => {
   });
   it("测试DOM", () => {
     cy.get("#root").find(".App");
-    cy.get(".App-link").should("contain", "Learn React");
+    cy.get(".LogoText").should("contain", "HERE IS LOGO");
   });
 });
