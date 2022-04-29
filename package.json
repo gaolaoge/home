@@ -5,13 +5,15 @@
   "main": "index.ts",
   "scripts": {
     "start": "node src/index.ts",
-    "dev": "nodemon --watch src --delay 1000ms src/index.ts"
+    "dev": "nodemon --watch src --delay 1000ms src/index.ts",
+    "cypress-test": "cypress run"
   },
   "keywords": [],
   "author": "gaoge",
   "license": "ISC",
   "dependencies": {
     "co-mysql": "^1.0.0",
+    "cypress": "^9.6.0",
     "hydrogen-js-sdk": "^2.3.0",
     "koa": "^2.13.4",
     "koa-router": "^10.1.1",

@@ -9,7 +9,6 @@
     "axios": "^0.26.1",
     "bfj": "^7.0.2",
     "camelcase": "^6.1.0",
-    "cypress": "^9.6.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "hydrogen-js-sdk": "^2.3.0",
