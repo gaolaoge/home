@@ -26,15 +26,19 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
 
   useEffect(() => {
     // 日志列表
-    getLogList({ data: "data" }).then((data: LoglistItemProps[]) => {
-      setNewsList(data);
+    getLogList({ data: "data" }).then(({ code, message, data }: any) => {
+      if (code === 200) {
+        setNewsList(data);
+      }
     });
   }, []);
 
   useEffect(() => {
     // 用户信息
-    getUserSignature().then((data: UserInfoProps) => {
-      setUserSignature(data);
+    getUserSignature().then(({ code, message, data }: any) => {
+      if (code === 200) {
+        setUserSignature(data);
+      }
     });
   }, []);
 

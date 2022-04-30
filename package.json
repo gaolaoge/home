@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.ts",
     "dev": "nodemon --watch src --delay 1000ms src/index.ts",
-    "cypress-test": "cypress run"
+    "test": "cypress run"
   },
   "keywords": [],
   "author": "gaoge",

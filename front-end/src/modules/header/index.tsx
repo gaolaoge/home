@@ -68,7 +68,9 @@ function Header(props: HeaderProps) {
       </Menu>
     ),
     arrow: true,
-    placement: "bottomRight"
+    placement: "bottomRight",
+    trigger: ["click"],
+    overlayClassName: "header_navs_dropdown"
   };
   const miniScreenDropdownProps: DropDownProps = {
     overlay: (
@@ -90,7 +92,8 @@ function Header(props: HeaderProps) {
       </Menu>
     ),
     arrow: true,
-    placement: "bottomRight"
+    placement: "bottomRight",
+    trigger: ["click", "hover"]
   };
   return (
     <div className="occupied">
@@ -103,9 +106,11 @@ function Header(props: HeaderProps) {
             </Dropdown>
           </div>
           {/* LOGO */}
-          <span className={`LogoText ${webPattern}`} onClick={() => navigate("/home")}>
-            HERE IS LOGO
-          </span>
+          <div id="logo">
+            <span className={`LogoText ${webPattern}`} onClick={() => navigate("/home")}>
+              HERE IS LOGO
+            </span>
+          </div>
         </div>
         <div className={"operation"}>
           {/* 切换 */}

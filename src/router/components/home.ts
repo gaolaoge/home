@@ -14,6 +14,10 @@ const data = {
 
 module.exports = router => {
   router.get("/home/getUserSignature", async ctx => {
-    ctx.body = data;
+    ctx.body = {
+      code: 200,
+      message: "success",
+      data
+    };
   });
 };

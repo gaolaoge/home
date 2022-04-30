@@ -27,6 +27,10 @@ const getLogList = [
 
 module.exports = router => {
   router.get("/log/getLogList", async ctx => {
-    ctx.body = getLogList;
+    ctx.body = {
+      code: 200,
+      message: "success",
+      data: getLogList
+    };
   });
 };

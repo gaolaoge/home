@@ -1,0 +1,17 @@
+{
+  "header_module": {
+    "wrapper": ".headerWrapper",
+    "logo": "#logo",
+    "rowNavs": ".operation .nav",
+    "searchInput": ".operation .ant-input",
+    "patternBtn": ".operation .pattern",
+    "dropdownList": ".header_navs_dropdown"
+  },
+  "home_page": {
+    "wrapper": ".home-page-wrapper",
+    "banner": ".banner-wrapper",
+    "logList": ".log-list",
+    "userInfo": ".userInfo-wrapper",
+    "resume": ".resume"
+  }
+}
