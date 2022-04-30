@@ -42,7 +42,7 @@ const Log: FC<FLogProps> = (props: FLogProps) => {
 
   useEffect(() => {
     // 获取日志列表
-    getLogList({}).then((data: LoglistItemProps[]) => setNewsList(data));
+    getLogList({}).then(({ code, message, data }: any) => setNewsList(data));
   }, []);
 
   return (
