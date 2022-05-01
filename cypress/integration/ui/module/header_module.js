@@ -2,7 +2,7 @@ import { header_module } from "../locator.json";
 
 export default class {
   constructor() {
-    this.url = Cypress.env("home_address");
+    this.url = Cypress.env("input_address");
   }
   get wrapper() {
     return cy.get(header_module.wrapper);
