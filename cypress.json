@@ -4,6 +4,6 @@
   "video": false,
   "baseUrl": "http://localhost:2345",
   "env": {
-    "home_address": "http://localhost:2345"
+    "input_address": "http://localhost:2345"
   }
 }
