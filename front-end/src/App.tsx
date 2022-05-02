@@ -17,7 +17,7 @@ function App(props: AppProps) {
     }, 2000);
   }, []);
   return (
-    <div className={`App ${webPattern === "Dark" ? "dark" : ""}`}>
+    <div data-testid={"app"} className={`App ${webPattern === "Dark" ? "dark" : ""}`}>
       {!deleteLoading && <Loading shutLoading={shutLoading} />}
       <Router />
     </div>

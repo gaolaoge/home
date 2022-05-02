@@ -4457,8 +4457,8 @@
     "ms" "^2.1.1"
 
 "debug@^3.2.6":
-  "integrity" "sha1-clgLfpFF+zm2Z2+cXl+xALk0F5o="
-  "resolved" "https://registry.nlark.com/debug/download/debug-3.2.7.tgz"
+  "integrity" "sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ=="
+  "resolved" "https://registry.npmjs.org/debug/-/debug-3.2.7.tgz"
   "version" "3.2.7"
   dependencies:
     "ms" "^2.1.1"
@@ -8383,8 +8383,8 @@
   "version" "1.4.0"
 
 "needle@^2.5.2":
-  "integrity" "sha1-ItHf++NJDCuD4wH3cJtnNs2PJoQ="
-  "resolved" "https://registry.nlark.com/needle/download/needle-2.9.1.tgz?cache=0&sync_timestamp=1630675856853&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fneedle%2Fdownload%2Fneedle-2.9.1.tgz"
+  "integrity" "sha512-6R9fqJ5Zcmf+uYaFgdIHmLwNldn5HbK8L5ybn7Uz+ylX/rnOsSp1AHcvQSrCaFN+qNM1wpymHqD7mVasEOlHGQ=="
+  "resolved" "https://registry.npmjs.org/needle/-/needle-2.9.1.tgz"
   "version" "2.9.1"
   dependencies:
     "debug" "^3.2.6"
@@ -8936,8 +8936,8 @@
     "lines-and-columns" "^1.1.6"
 
 "parse-node-version@^1.0.1":
-  "integrity" "sha1-4rXb7eAOf6m8NjYH9TMn6LBzGJs="
-  "resolved" "https://registry.npm.taobao.org/parse-node-version/download/parse-node-version-1.0.1.tgz"
+  "integrity" "sha512-3YHlOa/JgH6Mnpr05jP9eDG254US9ek25LyIxZlDItp2iJtwyaXQb57lBYLdT3MowkUFYEV2XXNAYIPlESvJlA=="
+  "resolved" "https://registry.npmjs.org/parse-node-version/-/parse-node-version-1.0.1.tgz"
   "version" "1.0.1"
 
 "parse5@6.0.1":
@@ -12262,9 +12262,9 @@
   "version" "2.4.0"
 
 "tslib@^2.3.0":
-  "integrity" "sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE="
-  "resolved" "https://registry.nlark.com/tslib/download/tslib-2.3.1.tgz"
-  "version" "2.3.1"
+  "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
+  "version" "2.4.0"
 
 "tsutils@^3.17.1", "tsutils@^3.21.0":
   "integrity" "sha1-tIcX05TOpsHglpg+7Vjp1hcVtiM="

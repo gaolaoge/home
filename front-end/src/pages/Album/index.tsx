@@ -18,7 +18,7 @@ import "./index.less";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Picture, { PictureProps } from "./components/Picture";
-import { getDateText, transClasses, currentInnerWidth } from "../../utils";
+import { getTimeString, transClasses, currentInnerWidth } from "../../utils";
 
 const { Item } = Descriptions;
 const { TabPane } = Tabs;
@@ -255,8 +255,8 @@ const Album: FC<FAlbumProps> = (props: FAlbumProps) => {
               <Descriptions size="small" column={{ xs: 1, sm: 1, md: 2, lg: 2 }}>
                 <Item label="创建人">{AlbumInfo.created}</Item>
                 <Item label="所属分类">{AlbumInfo.theCategory}</Item>
-                <Item label="创建时间">{getDateText(AlbumInfo.creationTime)}</Item>
-                <Item label="最近修改时间">{getDateText(AlbumInfo.effectiveTime)}</Item>
+                <Item label="创建时间">{getTimeString(AlbumInfo.creationTime)}</Item>
+                <Item label="最近修改时间">{getTimeString(AlbumInfo.effectiveTime)}</Item>
                 <Item label="关键字">Gonghu Road, Xihu District, Hangzhou, Zhejiang, China</Item>
               </Descriptions>
             </Col>

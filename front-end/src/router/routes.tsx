@@ -1,4 +1,4 @@
-import { Suspense, lazy, FC } from "react";
+import React, { Suspense, lazy, FC } from "react";
 import { useRoutes, Navigate } from "react-router-dom";
 import { Spin } from "antd";
 

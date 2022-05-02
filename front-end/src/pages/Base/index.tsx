@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import Header from "../../modules/header";
+import Header from "../../modules/Header";
 import "./index.less";
 
 interface BaseProps {}

@@ -97,7 +97,7 @@ function Header(props: HeaderProps) {
   };
   return (
     <div className="occupied">
-      <div className={transClasses("headerWrapper", webPattern)}>
+      <div data-testid={"header-wrapper"} className={transClasses("headerWrapper", webPattern)}>
         <div className="L">
           {/* 纵向导航 */}
           <div>
