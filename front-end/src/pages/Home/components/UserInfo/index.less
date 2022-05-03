@@ -79,8 +79,15 @@
       font-size: 20px;
       color: #333;
       transition: color 0.2s ease;
+      path {
+        fill: #333;
+        transition: fill 0.2s ease;
+      }
       &:hover {
         color: @color-success;
+        path {
+          fill: @color-success;
+        }
       }
     }
   }

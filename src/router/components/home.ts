@@ -6,7 +6,8 @@ const data = {
   userName: "高歌",
   articlesNum: 10,
   tabsNum: 20,
-  gitURL: "",
+  gitURL: "https://github.com/gaolaoge",
+  giteeURL: "https://gitee.com/gaoge2",
   QQ: "183412808",
   WeChat: "gaolaogui2",
   Email: "183412808@qq.com"

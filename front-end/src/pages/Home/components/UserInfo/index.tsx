@@ -1,6 +1,10 @@
+import React from "react";
 import { connect, useSelector } from "react-redux";
 import "./index.less";
 import { GithubOutlined, AlipayCircleOutlined, QqOutlined, WechatOutlined, MailFilled } from "@ant-design/icons";
+import Gitee from "../../../../assets/icons/Gitee";
+import { notification, Popover } from "antd";
+import WXIMG from "../../../../assets/images/WechatIMG.png";
 
 export interface UserInfoProps {
   avatar?: string;
@@ -10,6 +14,7 @@ export interface UserInfoProps {
   articlesNum?: number;
   tabsNum?: number;
   gitURL?: string;
+  giteeURL?: string;
   ALiPay?: string;
   QQ?: string;
   WeChat?: string;
@@ -18,8 +23,11 @@ export interface UserInfoProps {
 interface FUserInfoProps extends UserInfoProps {}
 
 function UserInfo(props: FUserInfoProps) {
-  const { avatar, userName, articlesNum, tabsNum, gitURL, ALiPay, QQ, WeChat, Email } = props;
+  const { avatar, userName, articlesNum, tabsNum, gitURL, giteeURL, ALiPay, QQ, WeChat, Email } = props;
   const webPattern = useSelector(({ global }: any) => global.webPattern);
+
+  const addBookmark = () => {};
+
   return (
     <div className={`userInfo-wrapper ${webPattern}`}>
       <div className="userHeader">
@@ -37,27 +45,36 @@ function UserInfo(props: FUserInfoProps) {
         </div>
       </div>
       <div className="bookmark">
-        <div className="bookmarkBtn">
+        <div className="bookmarkBtn" onClick={() => addBookmark()}>
           <i className={"iconfont icon-qizhi-"} />
           加入书签
         </div>
       </div>
       <div className="otherPlatform">
+        {/* GitHub */}
         <div>
-          <GithubOutlined className={"accountLogo"} />
+          <a href={gitURL} target="_blank">
+            <GithubOutlined className={"accountLogo"} />
+          </a>
         </div>
+        {/* Gitee */}
         <div>
-          <AlipayCircleOutlined className={"accountLogo"} />
+          <a href={giteeURL} target="_blank">
+            <Gitee className={"accountLogo"} />
+          </a>
         </div>
-        <div>
+        {/* qq */}
+        <Popover placement="bottom" content={QQ}>
           <QqOutlined className={"accountLogo"} />
-        </div>
-        <div>
+        </Popover>
+        {/* 微信 */}
+        <Popover placement="bottom" content={WeChat}>
           <WechatOutlined className={"accountLogo"} />
-        </div>
-        <div>
+        </Popover>
+        {/* Email */}
+        <a href={"mailto:" + Email}>
           <MailFilled className={"accountLogo"} />
-        </div>
+        </a>
       </div>
     </div>
   );
