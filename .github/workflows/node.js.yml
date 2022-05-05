@@ -20,7 +20,6 @@ jobs:
           npm i
           cd front-end
           npm i
-          npm run test
           npm run build
           cd ..
           pm2 stop 0
