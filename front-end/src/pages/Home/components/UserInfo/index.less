@@ -22,8 +22,16 @@
         color: @color-base-white-text;
       }
     }
-    .otherPlatform .accountLogo {
-      color: rgba(200, 200, 200, 1);
+    .otherPlatform .icon {
+      path {
+        fill: rgba(200, 200, 200, 1);
+        transition: fill 0.2s ease;
+      }
+      &:hover {
+        path {
+          fill: @color-success;
+        }
+      }
     }
   }
   .userHeader {
@@ -74,17 +82,14 @@
     display: flex;
     justify-content: space-around;
 
-    .accountLogo {
+    .icon {
       cursor: pointer;
       font-size: 20px;
-      color: #333;
-      transition: color 0.2s ease;
       path {
         fill: #333;
         transition: fill 0.2s ease;
       }
       &:hover {
-        color: @color-success;
         path {
           fill: @color-success;
         }

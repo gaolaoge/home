@@ -42,6 +42,13 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
     });
   }, []);
 
+  const jump = () => {
+    // navigate("/resume");
+    const w: any = window.open("about:blank");
+
+    w.location.href = "https://www.baidu.com";
+  };
+
   return (
     <div className={"home-page-wrapper"}>
       {/* BANNER */}
@@ -69,7 +76,7 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
             <Col xs={24} sm={10} md={8} lg={6}>
               <aside>
                 <UserInfo {...userSignature} />
-                <div className={transClasses("resume", "MODULE", webPattern)} onClick={() => navigate("/resume")}>
+                <div className={transClasses("resume", "MODULE", webPattern)} onClick={() => jump()}>
                   <SolutionOutlined />
                   {"  职业履历"}
                 </div>

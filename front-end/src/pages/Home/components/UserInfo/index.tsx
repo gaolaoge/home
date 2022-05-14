@@ -26,6 +26,7 @@ function UserInfo(props: FUserInfoProps) {
   const { avatar, userName, articlesNum, tabsNum, gitURL, giteeURL, ALiPay, QQ, WeChat, Email } = props;
   const webPattern = useSelector(({ global }: any) => global.webPattern);
 
+  // 加入书签
   const addBookmark = () => {};
 
   return (
@@ -54,26 +55,26 @@ function UserInfo(props: FUserInfoProps) {
         {/* GitHub */}
         <div>
           <a href={gitURL} target="_blank">
-            <GithubOutlined className={"accountLogo"} />
+            <GithubOutlined className={"icon"} />
           </a>
         </div>
         {/* Gitee */}
         <div>
           <a href={giteeURL} target="_blank">
-            <Gitee className={"accountLogo"} />
+            <Gitee className={"icon"} />
           </a>
         </div>
         {/* qq */}
         <Popover placement="bottom" content={QQ}>
-          <QqOutlined className={"accountLogo"} />
+          <QqOutlined className={"icon"} />
         </Popover>
         {/* 微信 */}
         <Popover placement="bottom" content={WeChat}>
-          <WechatOutlined className={"accountLogo"} />
+          <WechatOutlined className={"icon"} />
         </Popover>
         {/* Email */}
         <a href={"mailto:" + Email}>
-          <MailFilled className={"accountLogo"} />
+          <MailFilled className={"icon"} />
         </a>
       </div>
     </div>
