@@ -45,8 +45,7 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
   const jump = () => {
     // navigate("/resume");
     const w: any = window.open("about:blank");
-
-    w.location.href = "http://45.77.247.127/resume";
+    w.location.href = "http://45.77.247.127/resume/";
   };
 
   return (
