@@ -46,7 +46,7 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
     // navigate("/resume");
     const w: any = window.open("about:blank");
 
-    w.location.href = "https://www.baidu.com";
+    w.location.href = "http://45.77.247.127/resume";
   };
 
   return (
