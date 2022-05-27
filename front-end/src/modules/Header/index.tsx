@@ -22,8 +22,8 @@ const navs = [
 ];
 
 const gitOutreach = [
-  { name: "仓库地址", path: "https://www.antgroup.com", target: "_blank" },
-  { name: "项目地址", path: "https://www.antgroup.com", target: "_blank" }
+  // { name: "仓库地址", path: "https://www.antgroup.com", target: "_blank" },
+  { name: "项目地址", path: "https://github.com/gaolaoge/home", target: "_blank" }
 ];
 
 function Header(props: HeaderProps) {
