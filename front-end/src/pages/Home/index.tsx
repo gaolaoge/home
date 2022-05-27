@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import "./index.less";
-import { connect, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { SolutionOutlined } from "@ant-design/icons";
 import { Row, Col } from "antd";
@@ -17,12 +17,10 @@ interface HomeProps {}
 const Home: FC<HomeProps> = (props: HomeProps) => {
   const navigate = useNavigate();
   const webPattern = useSelector(({ global }: any) => global.webPattern);
+  const store_UserInfo = useSelector(({ home }: any) => home.userInfo);
+  const dispatch = useDispatch();
   const [newsList, setNewsList] = useState<LoglistItemProps[]>([]);
-  const [userSignature, setUserSignature] = useState<UserInfoProps>({
-    avatar: "",
-    title: "",
-    signature: ""
-  });
+  const [userSignature, setUserSignature] = useState<UserInfoProps>(store_UserInfo);
 
   useEffect(() => {
     // 日志列表
@@ -38,6 +36,7 @@ const Home: FC<HomeProps> = (props: HomeProps) => {
     getUserSignature().then(({ code, message, data }: any) => {
       if (code === 200) {
         setUserSignature(data);
+        dispatch({ type: "setUserInfo", userInfo: data });
       }
     });
   }, []);

@@ -38,6 +38,8 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
 const webpackDevClientEntry = require.resolve("react-dev-utils/webpackHotDevClient");
 const reactRefreshOverlayEntry = require.resolve("react-dev-utils/refreshOverlayInterop");
 
+const DashboardPlugin = require("webpack-dashboard/plugin");
+
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== "false";
@@ -557,6 +559,7 @@ module.exports = function (webpackEnv) {
       ]
     },
     plugins: [
+      false && new DashboardPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
