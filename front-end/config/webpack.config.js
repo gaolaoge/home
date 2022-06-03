@@ -27,6 +27,7 @@ const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
 const postcssNormalize = require("postcss-normalize");
 
@@ -728,7 +729,10 @@ module.exports = function (webpackEnv) {
             }
           }
         }),
-      isEnvProduction && new BundleAnalyzerPlugin({ analyzerMode: "static" })
+      isEnvProduction && new BundleAnalyzerPlugin({ analyzerMode: "static" }),
+      new PreloadWebpackPlugin({
+        rel: "prefetch"
+      })
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
