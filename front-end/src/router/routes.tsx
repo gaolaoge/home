@@ -2,18 +2,18 @@ import React, { Suspense, lazy, FC } from "react";
 import { useRoutes, Navigate } from "react-router-dom";
 import { Spin } from "antd";
 
-const LazyBase = lazy(() => import("../pages/Base"));
-const LazyHome = lazy(() => import("../pages/Home"));
-const LazyTag = lazy(() => import("../pages/Tag"));
-const LazyLogin = lazy(() => import("../pages/Login"));
-const LazyNote = lazy(() => import("../pages/Note"));
-const LazyLog = lazy(() => import("../pages/Log"));
-const LazyPhoto = lazy(() => import("../pages/Photo"));
-const LazyTrip = lazy(() => import("../pages/Trip"));
-const LazyAlbum = lazy(() => import("../pages/Album"));
-const LazyResume = lazy(() => import("../pages/Resume"));
-const LazyVlog = lazy(() => import("../pages/Vlog"));
-const LazyLog_Content = lazy(() => import("../modules/Log-content"));
+const LazyBase = lazy(() => import(/* webpackChunkName: "base" */ "../pages/Base"));
+const LazyHome = lazy(() => import(/* webpackChunkName: "Home" */ "../pages/Home"));
+const LazyTag = lazy(() => import(/* webpackChunkName: "Tag" */ "../pages/Tag"));
+const LazyLogin = lazy(() => import(/* webpackChunkName: "Login" */ "../pages/Login"));
+const LazyNote = lazy(() => import(/* webpackChunkName: "Note" */ "../pages/Note"));
+const LazyLog = lazy(() => import(/* webpackChunkName: "Log" */ "../pages/Log"));
+const LazyPhoto = lazy(() => import(/* webpackChunkName: "Photo" */ "../pages/Photo"));
+const LazyTrip = lazy(() => import(/* webpackChunkName: "Trip" */ "../pages/Trip"));
+const LazyAlbum = lazy(() => import(/* webpackChunkName: "Album" */ "../pages/Album"));
+const LazyResume = lazy(() => import(/* webpackChunkName: "Resume" */ "../pages/Resume"));
+const LazyVlog = lazy(() => import(/* webpackChunkName: "Vlog" */ "../pages/Vlog"));
+const LazyLog_Content = lazy(() => import(/* webpackChunkName: "Log-content" */ "../modules/Log-content"));
 
 const SuspenseLazyBase = () => (
   <Suspense
